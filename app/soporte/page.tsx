@@ -8,6 +8,7 @@ import { motion } from "framer-motion"
 import { Moon, Sun, ArrowLeft, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { ThemeLayout } from "../components/theme-layout"
 
 export default function SoportePage() {
   const { theme, setTheme } = useTheme()
@@ -71,7 +72,7 @@ export default function SoportePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <ThemeLayout>
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -222,7 +223,7 @@ export default function SoportePage() {
           </div>
         </div>
       </footer>
-    </div>
+    </ThemeLayout>
   )
 }
 

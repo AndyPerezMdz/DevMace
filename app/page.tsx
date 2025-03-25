@@ -11,6 +11,7 @@ import { MobileAppShowcase } from "@/components/mobile-app-showcase"
 import { WebAppShowcase } from "@/components/web-app-showcase"
 import { FeatureCard } from "@/components/feature-card"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { ThemeLayout } from "./components/theme-layout"
 
 export default function DownloadPage() {
   const { theme, setTheme } = useTheme()
@@ -41,7 +42,7 @@ export default function DownloadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <ThemeLayout>
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -569,7 +570,7 @@ export default function DownloadPage() {
           </div>
         </div>
       </footer>
-    </div>
+    </ThemeLayout>
   )
 }
 
