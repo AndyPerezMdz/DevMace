@@ -22,5 +22,5 @@ DevMace ofrece una solución moderna para la gestión de asistencia empresarial.
 - Interfaz adaptable (modo claro/oscuro)
 - Diseño responsive para todas las pantallas
 ## Acceso
-- Aplicación móvil: Disponible para descarga directa (.apk)
+- Aplicación móvil: Disponible para descarga directa [.apk](https://www.mediafire.com/file/2r9hxpmfkkqm005/HolidayInnExpressAplicacion.apk/file)
 - Plataforma web: Acceso en línea sin necesidad de instalación
