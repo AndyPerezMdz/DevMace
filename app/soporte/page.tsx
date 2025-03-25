@@ -5,12 +5,9 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
-import { Moon, Sun, ArrowLeft, HelpCircle, Phone, Mail, Smartphone, Send } from "lucide-react"
+import { Moon, Sun, ArrowLeft, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 
 export default function SoportePage() {
   const { theme, setTheme } = useTheme()
@@ -166,7 +163,7 @@ export default function SoportePage() {
         </div>
       </section>
 
-      {/* Support Tabs */}
+      {/* Support Content */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -174,229 +171,23 @@ export default function SoportePage() {
         className="py-12"
       >
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="faq" className="max-w-4xl mx-auto">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="faq">Preguntas Frecuentes</TabsTrigger>
-              <TabsTrigger value="contact">Contacto Directo</TabsTrigger>
-              <TabsTrigger value="guides">Guías de Uso</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="faq" className="space-y-6">
-              <motion.div variants={container} initial="hidden" animate="show" className="grid gap-6">
-                {faqs.map((faq, index) => (
-                  <motion.div key={index} variants={item}>
-                    <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300">
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white flex items-start gap-3">
-                          <HelpCircle className="w-6 h-6 text-[#233567] dark:text-blue-400 flex-shrink-0 mt-1" />
-                          <span>{faq.question}</span>
-                        </h3>
-                        <p className="text-gray-700 dark:text-gray-300 ml-9">{faq.answer}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </TabsContent>
-
-            <TabsContent value="contact">
-              <div className="grid md:grid-cols-2 gap-8">
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Card className="border-0 shadow-md">
-                    <CardContent className="p-8">
-                      <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                        Contacta con nuestro equipo de soporte
-                      </h2>
-
-                      <motion.div variants={container} initial="hidden" animate="show" className="space-y-6 mb-8">
-                        <motion.div
-                          variants={item}
-                          className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                        >
-                          <div className="w-12 h-12 rounded-full bg-[#233567]/10 dark:bg-[#233567]/20 flex items-center justify-center flex-shrink-0">
-                            <Mail className="w-6 h-6 text-[#233567] dark:text-blue-400" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-lg mb-1 text-gray-900 dark:text-white">Email</h3>
-                            <p className="text-gray-700 dark:text-gray-300 mb-2">info@devmace.com</p>
-                            <a
-                              href="mailto:info@devmace.com"
-                              className="text-[#233567] dark:text-blue-400 font-medium hover:underline inline-flex items-center"
-                            >
-                              Envíanos un correo
-                              <ArrowLeft className="w-4 h-4 ml-1 rotate-180" />
-                            </a>
-                          </div>
-                        </motion.div>
-
-                        <motion.div
-                          variants={item}
-                          className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                        >
-                          <div className="w-12 h-12 rounded-full bg-[#233567]/10 dark:bg-[#233567]/20 flex items-center justify-center flex-shrink-0">
-                            <Phone className="w-6 h-6 text-[#233567] dark:text-blue-400" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-lg mb-1 text-gray-900 dark:text-white">Teléfono</h3>
-                            <p className="text-gray-700 dark:text-gray-300 mb-2">+52 (123) 456 7890</p>
-                            <a
-                              href="tel:+521234567890"
-                              className="text-[#233567] dark:text-blue-400 font-medium hover:underline inline-flex items-center"
-                            >
-                              Llámanos
-                              <ArrowLeft className="w-4 h-4 ml-1 rotate-180" />
-                            </a>
-                          </div>
-                        </motion.div>
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="p-6 rounded-lg bg-[#233567]/5 dark:bg-[#233567]/10 border border-[#233567]/10 dark:border-[#233567]/20"
-                      >
-                        <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
-                          Horario de atención
-                        </h3>
-                        <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                          <div className="flex justify-between">
-                            <span>Lunes - Viernes:</span>
-                            <span>9:00 AM - 6:00 PM</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span>Sábado:</span>
-                            <span>10:00 AM - 2:00 PM</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span>Domingo:</span>
-                            <span>Cerrado</span>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Card className="border-0 shadow-md">
-                    <CardContent className="p-8">
-                      <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Envíanos un mensaje</h2>
-                      <form className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="space-y-2">
-                            <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                              Nombre
-                            </label>
-                            <Input
-                              id="name"
-                              placeholder="Tu nombre"
-                              className="border-gray-300 dark:border-gray-700 focus:ring-[#233567] dark:focus:ring-blue-500"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                              Email
-                            </label>
-                            <Input
-                              id="email"
-                              type="email"
-                              placeholder="tu@email.com"
-                              className="border-gray-300 dark:border-gray-700 focus:ring-[#233567] dark:focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <label htmlFor="issue" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Tipo de problema
-                          </label>
-                          <select
-                            id="issue"
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#233567] dark:focus:ring-blue-500"
-                          >
-                            <option value="">Selecciona una opción</option>
-                            <option value="app">Problema con la aplicación móvil</option>
-                            <option value="web">Problema con la aplicación web</option>
-                            <option value="account">Problema con mi cuenta</option>
-                            <option value="other">Otro</option>
-                          </select>
-                        </div>
-                        <div className="space-y-2">
-                          <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Descripción del problema
-                          </label>
-                          <Textarea
-                            id="message"
-                            rows={5}
-                            placeholder="Describe tu problema en detalle"
-                            className="border-gray-300 dark:border-gray-700 focus:ring-[#233567] dark:focus:ring-blue-500"
-                          />
-                        </div>
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                          <Button className="w-full bg-[#233567] hover:bg-[#1a284f] text-white">
-                            <Send className="w-4 h-4 mr-2" />
-                            Enviar solicitud de soporte
-                          </Button>
-                        </motion.div>
-                      </form>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="guides">
-              <motion.div variants={container} initial="hidden" animate="show" className="grid md:grid-cols-2 gap-8">
-                <motion.div variants={item}>
-                  <Card className="border-0 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <div className="h-48 bg-[#233567]/10 dark:bg-[#233567]/20 flex items-center justify-center">
-                      <Smartphone className="w-16 h-16 text-[#233567] dark:text-blue-400" />
-                    </div>
+          <div className="max-w-4xl mx-auto">
+            <motion.div variants={container} initial="hidden" animate="show" className="grid gap-6">
+              {faqs.map((faq, index) => (
+                <motion.div key={index} variants={item}>
+                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                        Guía de la aplicación móvil
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white flex items-start gap-3">
+                        <HelpCircle className="w-6 h-6 text-[#233567] dark:text-blue-400 flex-shrink-0 mt-1" />
+                        <span>{faq.question}</span>
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4">
-                        Aprende a utilizar todas las funciones de nuestra aplicación móvil para empleados, desde el
-                        registro de asistencia hasta la descarga de reportes.
-                      </p>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                        <Button className="bg-[#233567] hover:bg-[#1a284f] text-white w-full">Ver guía</Button>
-                      </motion.div>
+                      <p className="text-gray-700 dark:text-gray-300 ml-9">{faq.answer}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
-
-                <motion.div variants={item}>
-                  <Card className="border-0 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <div className="h-48 bg-[#233567]/10 dark:bg-[#233567]/20 flex items-center justify-center">
-                      <HelpCircle className="w-16 h-16 text-[#233567] dark:text-blue-400" />
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                        Guía de la aplicación web
-                      </h3>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4">
-                        Descubre cómo administrar empleados, generar códigos QR y obtener reportes detallados desde el
-                        panel de administración web.
-                      </p>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                        <Button className="bg-[#233567] hover:bg-[#1a284f] text-white w-full">Ver guía</Button>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </motion.div>
-            </TabsContent>
-          </Tabs>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 

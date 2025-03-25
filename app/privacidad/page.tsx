@@ -389,38 +389,6 @@ export default function PrivacidadPage() {
                 </CardContent>
               </Card>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-            >
-              <Card className="border-0 shadow-md">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Cambios a esta política</h2>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Podemos actualizar nuestra política de privacidad de vez en cuando. Te notificaremos cualquier
-                    cambio publicando la nueva política de privacidad en esta página y, si los cambios son
-                    significativos, te enviaremos una notificación.
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 mb-6">
-                    Te recomendamos que revises esta política de privacidad periódicamente para estar informado sobre
-                    cómo protegemos tu información.
-                  </p>
-
-                  <div className="text-center">
-                    <p className="text-gray-700 dark:text-gray-300 font-semibold mb-4">
-                      Última actualización: 21 de marzo de 2025
-                    </p>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button className="bg-[#233567] hover:bg-[#1a284f] text-white px-6 py-2">
-                        Descargar política completa (PDF)
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -460,4 +428,3 @@ export default function PrivacidadPage() {
     </div>
   )
 }
-
