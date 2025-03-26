@@ -1,16 +1,31 @@
 "use client"
 
 import type React from "react"
-
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Trophy } from "lucide-react"
+import { QRGame } from "./qr-game"
 
 interface Testimonial {
   id: number
   name: string
   company: string
   text: string
+  hasGame?: boolean
+}
+
+interface QRPosition {
+  x: number
+  y: number
+}
+
+interface GameState {
+  score: number
+  timeLeft: number
+  isPlaying: boolean
+  qrCodes: QRPosition[]
+  currentQR: QRPosition | null
 }
 
 const testimonials: Testimonial[] = [
@@ -97,7 +112,7 @@ const testimonials: Testimonial[] = [
     name: "Andrea Fernández",
     company: "Holiday Inn Express Mérida",
     text: "Nuestros huéspedes han expresado su satisfacción con el nuevo sistema de reservas.",
- 
+    hasGame: true
   },
   {
     id: 53,
@@ -159,6 +174,7 @@ const testimonials: Testimonial[] = [
 const moreTestimonials = [...testimonials, ...testimonials.map((t) => ({ ...t, id: t.id + 100 }))]
 
 export function TestimonialsSection() {
+  const [showGame, setShowGame] = useState(false)
   const row1Ref = useRef<HTMLDivElement>(null)
   const row2Ref = useRef<HTMLDivElement>(null)
 
@@ -215,7 +231,15 @@ export function TestimonialsSection() {
           }}
         >
           {moreTestimonials.slice(0, 8).map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            <TestimonialCard 
+              key={testimonial.id} 
+              testimonial={testimonial} 
+              onCardClick={() => {
+                if (testimonial.name === "Andrea Fernández") {
+                  setShowGame(true)
+                }
+              }}
+            />
           ))}
         </motion.div>
       </div>
@@ -235,23 +259,40 @@ export function TestimonialsSection() {
           }}
         >
           {moreTestimonials.slice(8, 16).map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            <TestimonialCard 
+              key={testimonial.id} 
+              testimonial={testimonial}
+              onCardClick={() => {
+                if (testimonial.name === "Andrea Fernández") {
+                  setShowGame(true)
+                }
+              }}
+            />
           ))}
         </motion.div>
       </div>
+
+      {showGame && <QRGame onClose={() => setShowGame(false)} />}
     </section>
   )
 }
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({ 
+  testimonial, 
+  onCardClick 
+}: { 
+  testimonial: Testimonial
+  onCardClick: () => void
+}) {
   return (
     <motion.div
-      className="flex-shrink-0 w-80 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 relative group"
+      className="flex-shrink-0 w-80 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 relative group cursor-pointer"
       whileHover={{
         scale: 1.05,
         boxShadow: "0 0 20px 5px rgba(35, 53, 103, 0.2)",
       }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      onClick={onCardClick}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#233567]/5 to-transparent dark:from-blue-500/10 dark:to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -263,6 +304,23 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </div>
 
       <p className="text-gray-700 dark:text-gray-300 relative z-10">"{testimonial.text}"</p>
+
+      {testimonial.name === "Andrea Fernández" && (
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 10, -10, 0]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-4 right-4 text-2xl"
+        >
+          🏆
+        </motion.div>
+      )}
     </motion.div>
   )
 }

@@ -95,30 +95,35 @@ export default function ContactoPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
-            {theme === "dark" ? (
-              <Image src="/images/DevMaceLogoW.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
-            ) : (
-              <Image src="/images/DevMaceLogoB.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
-            )}
+            <Link href="/" className="transition-transform hover:scale-105">
+              {theme === "dark" ? (
+                <Image src="/images/DevMaceLogoW.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
+              ) : (
+                <Image src="/images/DevMaceLogoB.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
+              )}
+            </Link>
 
             <div className="hidden md:flex gap-6 ml-8">
               <Link
                 href="/contacto"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Equipo
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/soporte"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Soporte
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/privacidad"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Privacidad
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
             </div>
           </div>
@@ -128,7 +133,7 @@ export default function ContactoPage() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -148,15 +153,30 @@ export default function ContactoPage() {
           style={{ animationDelay: "1s" }}
         ></div>
 
+        {/* Floating shapes */}
+        <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-[#233567]/5 dark:bg-[#233567]/10 rounded-full blur-xl -z-10 animate-float"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-16 h-16 bg-[#3a5ca9]/5 dark:bg-[#3a5ca9]/10 rounded-full blur-xl -z-10 animate-float" style={{ animationDelay: "1s" }}></div>
+        <div className="absolute top-2/3 left-1/3 w-12 h-12 bg-[#233567]/5 dark:bg-[#233567]/10 rounded-full blur-lg -z-10 animate-float" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-12 h-12 bg-[#3a5ca9]/5 dark:bg-[#3a5ca9]/10 rounded-full blur-lg -z-10 animate-float" style={{ animationDelay: "3s" }}></div>
+
+        {/* Gradient lines */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#233567]/10 to-transparent dark:via-[#3a5ca9]/10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#233567]/10 to-transparent dark:via-[#3a5ca9]/10"></div>
+
         <div className="container mx-auto px-4">
-          <div className="flex items-center mb-8">
-            <Link href="/" className="flex items-center text-[#233567] dark:text-blue-400 hover:underline">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center mb-8"
+          >
+            <Link href="/" className="flex items-center text-[#233567] dark:text-blue-400 hover:underline group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
               Volver al inicio
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="max-w-3xl mx-auto text-center mb-16">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -204,23 +224,25 @@ export default function ContactoPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              {theme === "dark" ? (
-                <Image
-                  src="/images/DevMaceLogoW.png"
-                  alt="DevMace Logo"
-                  width={120}
-                  height={36}
-                  className="h-8 w-auto"
-                />
-              ) : (
-                <Image
-                  src="/images/DevMaceLogoB.png"
-                  alt="DevMace Logo"
-                  width={120}
-                  height={36}
-                  className="h-8 w-auto"
-                />
-              )}
+              <Link href="/" className="transition-transform hover:scale-105">
+                {theme === "dark" ? (
+                  <Image
+                    src="/images/DevMaceLogoW.png"
+                    alt="DevMace Logo"
+                    width={120}
+                    height={36}
+                    className="h-8 w-auto"
+                  />
+                ) : (
+                  <Image
+                    src="/images/DevMaceLogoB.png"
+                    alt="DevMace Logo"
+                    width={120}
+                    height={36}
+                    className="h-8 w-auto"
+                  />
+                )}
+              </Link>
             </div>
           </div>
 
@@ -266,7 +288,7 @@ function TeamMemberCard({ member, variants }: { member: TeamMember; variants: an
             <div className="flex space-x-3 justify-center">
               <a
                 href={`mailto:${member.socialLinks.email}`}
-                className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-colors"
+                className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-all duration-300 hover:scale-110"
                 aria-label={`Email a ${member.name}`}
               >
                 <Mail className="w-4 h-4" />
@@ -276,7 +298,7 @@ function TeamMemberCard({ member, variants }: { member: TeamMember; variants: an
                   href={member.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-all duration-300 hover:scale-110"
                   aria-label={`GitHub de ${member.name}`}
                 >
                   <Github className="w-4 h-4" />
@@ -287,7 +309,7 @@ function TeamMemberCard({ member, variants }: { member: TeamMember; variants: an
                   href={member.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-[#233567] hover:bg-[#233567] hover:text-white transition-all duration-300 hover:scale-110"
                   aria-label={`LinkedIn de ${member.name}`}
                 >
                   <Linkedin className="w-4 h-4" />
@@ -297,9 +319,13 @@ function TeamMemberCard({ member, variants }: { member: TeamMember; variants: an
           </div>
         </div>
         <CardContent className="p-6">
-          <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-white">{member.name}</h3>
+          <h3 className="text-xl font-bold mb-1 text-gray-900 dark:text-white group-hover:text-[#233567] dark:group-hover:text-blue-400 transition-colors duration-300">
+            {member.name}
+          </h3>
           <p className="text-[#233567] dark:text-blue-400 font-medium mb-4">{member.role}</p>
-          <p className="text-gray-700 dark:text-gray-300">{member.bio}</p>
+          <p className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">
+            {member.bio}
+          </p>
         </CardContent>
       </Card>
     </motion.div>

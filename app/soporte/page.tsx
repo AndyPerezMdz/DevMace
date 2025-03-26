@@ -77,30 +77,35 @@ export default function SoportePage() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
-            {theme === "dark" ? (
-              <Image src="/images/DevMaceLogoW.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
-            ) : (
-              <Image src="/images/DevMaceLogoB.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
-            )}
+            <Link href="/" className="transition-transform hover:scale-105">
+              {theme === "dark" ? (
+                <Image src="/images/DevMaceLogoW.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
+              ) : (
+                <Image src="/images/DevMaceLogoB.png" alt="DevMace Logo" width={150} height={45} className="h-8 w-auto" />
+              )}
+            </Link>
 
             <div className="hidden md:flex gap-6 ml-8">
               <Link
                 href="/contacto"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Equipo
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/soporte"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Soporte
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 href="/privacidad"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white relative group"
               >
                 Privacidad
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#233567] dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
             </div>
           </div>
@@ -110,7 +115,7 @@ export default function SoportePage() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -137,8 +142,8 @@ export default function SoportePage() {
             transition={{ duration: 0.5 }}
             className="flex items-center mb-8"
           >
-            <Link href="/" className="flex items-center text-[#233567] dark:text-blue-400 hover:underline">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+            <Link href="/" className="flex items-center text-[#233567] dark:text-blue-400 hover:underline group">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
               Volver al inicio
             </Link>
           </motion.div>
@@ -176,13 +181,15 @@ export default function SoportePage() {
             <motion.div variants={container} initial="hidden" animate="show" className="grid gap-6">
               {faqs.map((faq, index) => (
                 <motion.div key={index} variants={item}>
-                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300">
+                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 group">
                     <CardContent className="p-6">
-                      <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white flex items-start gap-3">
-                        <HelpCircle className="w-6 h-6 text-[#233567] dark:text-blue-400 flex-shrink-0 mt-1" />
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white flex items-start gap-3 group-hover:text-[#233567] dark:group-hover:text-blue-400 transition-colors duration-300">
+                        <HelpCircle className="w-6 h-6 text-[#233567] dark:text-blue-400 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
                         <span>{faq.question}</span>
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300 ml-9">{faq.answer}</p>
+                      <p className="text-gray-700 dark:text-gray-300 ml-9 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">
+                        {faq.answer}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -197,23 +204,25 @@ export default function SoportePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              {theme === "dark" ? (
-                <Image
-                  src="/images/DevMaceLogoW.png"
-                  alt="DevMace Logo"
-                  width={120}
-                  height={36}
-                  className="h-8 w-auto"
-                />
-              ) : (
-                <Image
-                  src="/images/DevMaceLogoB.png"
-                  alt="DevMace Logo"
-                  width={120}
-                  height={36}
-                  className="h-8 w-auto"
-                />
-              )}
+              <Link href="/" className="transition-transform hover:scale-105">
+                {theme === "dark" ? (
+                  <Image
+                    src="/images/DevMaceLogoW.png"
+                    alt="DevMace Logo"
+                    width={120}
+                    height={36}
+                    className="h-8 w-auto"
+                  />
+                ) : (
+                  <Image
+                    src="/images/DevMaceLogoB.png"
+                    alt="DevMace Logo"
+                    width={120}
+                    height={36}
+                    className="h-8 w-auto"
+                  />
+                )}
+              </Link>
             </div>
           </div>
           <div className="text-center">
